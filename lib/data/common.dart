@@ -9,3 +9,11 @@
 //这是配套使用的测试ID。先用这套ID调试，调试好给我们发个测试包看看，没问题的话我们会提供正式ID替换
 //
 //http://sdkdoc.beizi.biz/#/
+
+const appId = "20826";
+const splashSpaceId = '104835';
+const interstitialSpaceId = '106981';
+const nativeSpaceId = '106064';
+const unifiedSpaceId = '106064';
+const rewardVideoSpaceId = '111366';
+const timeOut = 5000;//广告请求超时时长，建议5000毫秒,该参数单位为ms

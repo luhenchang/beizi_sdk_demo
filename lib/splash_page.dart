@@ -1,4 +1,5 @@
 import 'package:beizi_sdk/beizi_sdk_export.dart';
+import 'package:beizi_sdk_demo/data/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -42,8 +43,8 @@ class _SplashPageState extends State<SplashPage> {
       debugPrint("广告关闭");
     });
     _splashAd = SplashAd(
-        adSpaceId: '104835',
-        totalTime: 5000,
+        adSpaceId: splashSpaceId,
+        totalTime: timeOut,
         listener: _adCallBack);
     // 使用命名路由跳转
     WidgetsBinding.instance.addPostFrameCallback((_) {

@@ -1,6 +1,8 @@
 import 'package:beizi_sdk/beizi_sdk_export.dart';
 import 'package:flutter/material.dart';
 
+import 'data/common.dart';
+
 class InterstitialPage extends StatefulWidget {
   const InterstitialPage({super.key, required this.title});
 
@@ -20,17 +22,21 @@ class _InterstitialPageState extends State<InterstitialPage> {
   void initState() {
     super.initState();
     _adCallBack = InterstitialAdListener(
-        onAdLoaded: () {
-          _interAd?.isLoaded().then((isLoaded){
-            _interAd?.showAd();
-          });
-        },
-        onAdClosed: () {},
-        onAdFailed: (code) {},
-        onAdClick: () {},
-        onAdShown: () {});
-    _interAd =
-        InterstitialAd(listener: _adCallBack, adSpaceId: '106981', totalTime: 5000);
+      onAdLoaded: () {
+        _interAd?.isLoaded().then((isLoaded) {
+          _interAd?.showAd();
+        });
+      },
+      onAdClosed: () {},
+      onAdFailed: (code) {},
+      onAdClick: () {},
+      onAdShown: () {},
+    );
+    _interAd = InterstitialAd(
+      listener: _adCallBack,
+      adSpaceId: interstitialSpaceId,
+      totalTime: timeOut,
+    );
   }
 
   @override
@@ -42,27 +48,30 @@ class _InterstitialPageState extends State<InterstitialPage> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-        canPop: couldBack,
-        child: Scaffold(
-            appBar: AppBar(
-              title: Text(widget.title),
-            ),
-            body: Stack(
+      canPop: couldBack,
+      child: Scaffold(
+        appBar: AppBar(title: Text(widget.title)),
+        body: Stack(
+          children: [
+            Column(
               children: [
-                Column(children: [
-                  ElevatedButton(
-                    child: const Text('点击展示插屏'),
-                    onPressed: () {
-                      _interAd = InterstitialAd(
-                          listener: _adCallBack,
-                          adSpaceId: '106981',
-                          totalTime: 5000);
-                      // 返回上一页
-                      _interAd?.loadAd();
-                    },
-                  )
-                ]),
+                ElevatedButton(
+                  child: const Text('点击展示插屏'),
+                  onPressed: () {
+                    _interAd = InterstitialAd(
+                      listener: _adCallBack,
+                      adSpaceId: interstitialSpaceId,
+                      totalTime: timeOut,
+                    );
+                    // 返回上一页
+                    _interAd?.loadAd();
+                  },
+                ),
               ],
-            )));
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

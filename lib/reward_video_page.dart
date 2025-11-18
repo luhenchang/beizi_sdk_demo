@@ -1,5 +1,6 @@
 import 'package:beizi_sdk/beizi_sdk_export.dart';
 import 'package:beizi_sdk/controller/beizi_reward_video_ad.dart';
+import 'package:beizi_sdk_demo/data/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -31,7 +32,7 @@ class _RewardedVideoPageState extends State<RewardedVideoPage> {
         }
       });
     });
-    _rewardedAd = RewardedVideoAd(listener: _adCallBack, adSpaceId: '111366', totalTime: 15000);
+    _rewardedAd = RewardedVideoAd(listener: _adCallBack, adSpaceId: rewardVideoSpaceId, totalTime: timeOut);
   }
 
   @override
@@ -54,7 +55,7 @@ class _RewardedVideoPageState extends State<RewardedVideoPage> {
                   ElevatedButton(
                     child: const Text('点击展示激励视频'),
                     onPressed: () {
-                      _rewardedAd = RewardedVideoAd(listener: _adCallBack, adSpaceId: '111366', totalTime: 15000);
+                      _rewardedAd = RewardedVideoAd(listener: _adCallBack, adSpaceId: rewardVideoSpaceId, totalTime: timeOut);
                       // 返回上一页
                       _rewardedAd?.loadAd();
                     },
