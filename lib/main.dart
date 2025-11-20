@@ -111,6 +111,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "beizi-sdk-demo",
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        ),
+      ),
       body: Stack(
         alignment: AlignmentDirectional.center,
         children: [
