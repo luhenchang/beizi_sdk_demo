@@ -89,6 +89,9 @@ class _HomePageState extends State<HomePage> {
         shouldForbidSensor: true,
       ),
     ).then((value) {
+      setState(() {
+        initStatus = InitStatus.success;
+      });
       _splashAd = SplashAd(
         adSpaceId: splashSpaceId,
         totalTime: timeOut,

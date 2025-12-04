@@ -21,7 +21,7 @@ class _SplashPageState extends State<SplashPage> {
   num eCpm = 0;
   bool initSuccess = false;
   bool couldBack = true;
-
+  bool isLoading = false;
   @override
   void dispose() {
     super.dispose();
@@ -39,8 +39,10 @@ class _SplashPageState extends State<SplashPage> {
       debugPrint("广告展示");
     }, onAdClicked: (){
       debugPrint("广告点击");
+      isLoading = false;
     }, onAdClosed: (){
       debugPrint("广告关闭");
+      isLoading = false;
     });
     _splashAd = SplashAd(
         adSpaceId: splashSpaceId,
@@ -95,8 +97,12 @@ class _SplashPageState extends State<SplashPage> {
                     ButtonWidget(
                         buttonText: '点击加载开屏页面',
                         callBack: () {
+                          if(isLoading){
+                            return;
+                          }
+                          isLoading = true;
                           _splashAd = SplashAd(
-                              adSpaceId: '104835',
+                              adSpaceId: splashSpaceId,
                               totalTime: 5000,
                               listener: _adCallBack);
                           var width = MediaQuery.of(context).size.width.toInt();
